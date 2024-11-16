@@ -2,9 +2,8 @@ import time
 
 class DeltaTime:
     def __init__(self): 
-        self.now = time.time()
-        self.previous = 0
-        self.delta = self.now - self.previous
+        self.now = self.previous = time.time()
+        self.delta = 0
 
     def update(self):
         self.now = time.time()

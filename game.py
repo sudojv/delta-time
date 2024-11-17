@@ -42,8 +42,8 @@ class Game:
 
     def _update_keydown_event(self, event):
         if event.key == pygame.K_SPACE:
-            if not self.rect.moving and self.rect.counter_end == 0:
-                self.rect.moving = True
+            if not self.rect.is_already_moved():
+                self.rect.start_moving()
 
 
     def _update_screen(self):
@@ -57,10 +57,10 @@ class Game:
 
     def _print_debug(self):
         fps_info = f'FPS: {self.clock.get_fps():.1f}'
-        self.debug.print(self.screen, fps_info)
+        self.debug.print(self.screen, fps_info, topleft=(5, 5))
 
         delta_time_info = f'DT: {self.delta_time.get():.4f}'
-        self.debug.print(self.screen, delta_time_info, y_offset=35)
+        self.debug.print(self.screen, delta_time_info, topleft=(5, 35))
 
 if __name__ == '__main__':
     pygame.init()
